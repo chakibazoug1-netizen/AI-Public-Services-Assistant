@@ -1,11 +1,5 @@
 import streamlit as st
 from knowledge import knowledge
-import unicodedata
-
-
-# --------------------------------------------------
-# PAGE CONFIGURATION
-# --------------------------------------------------
 
 st.set_page_config(
     page_title="AI Public Services Assistant",
@@ -13,197 +7,9 @@ st.set_page_config(
     layout="centered"
 )
 
-
-# --------------------------------------------------
-# TEXT NORMALIZATION
-# --------------------------------------------------
-
-def normalize_text(text):
-    if text is None:
-        return ""
-
-    text = str(text).lower().strip()
-
-    # Normalize Arabic characters
-    text = text.replace("أ", "ا")
-    text = text.replace("إ", "ا")
-    text = text.replace("آ", "ا")
-    text = text.replace("ى", "ي")
-    text = text.replace("ة", "ه")
-
-    # Remove Arabic diacritics
-    text = "".join(
-        char
-        for char in unicodedata.normalize("NFD", text)
-        if unicodedata.category(char) != "Mn"
-    )
-
-    return " ".join(text.split())
-
-
-# --------------------------------------------------
-# SEARCH ENGINE
-# --------------------------------------------------
-
-def find_service(query):
-
-    q = normalize_text(query)
-
-    if not q:
-        return None
-
-    best_service = None
-    best_score = 0
-
-    for service_id, service in knowledge.items():
-
-        score = 0
-
-        all_keywords = (
-            service.get("keywords_ar", [])
-            + service.get("keywords_en", [])
-        )
-
-        for keyword in all_keywords:
-
-            k = normalize_text(keyword)
-
-            if not k:
-                continue
-
-            # Exact phrase
-            if k in q:
-                score += len(k)
-
-            # Individual words
-            else:
-                words = k.split()
-
-                for word in words:
-                    if len(word) >= 2 and word in q:
-                        score += 1
-
-        if score > best_score:
-            best_score = score
-            best_service = service
-
-    return best_service
-
-
-# --------------------------------------------------
-# DISPLAY SERVICE
-# --------------------------------------------------
-
-def display_service(service, language="ar"):
-
-    if service is None:
-        st.info("Sorry, this information is not available yet.")
-        return
-
-    if language == "ar":
-
-        title = service.get("title_ar", "وثيقة")
-        administration = service.get(
-            "administration_ar",
-            "غير محدد"
-        )
-        file_info = service.get(
-            "file_ar",
-            "المعلومات غير متوفرة حاليا."
-        )
-        notes = service.get(
-            "notes_ar",
-            ""
-        )
-
-        st.markdown("---")
-
-        st.markdown(
-            f"# 📄 {title}"
-        )
-
-        st.markdown(
-            f"### 🏢 الإدارة المختصة\n"
-            f"{administration}"
-        )
-
-        st.markdown(
-            "### 📋 الملف والوثائق المطلوبة"
-        )
-
-        st.markdown(file_info)
-
-        if notes.strip():
-            st.markdown("### ℹ️ معلومات إضافية")
-            st.markdown(notes)
-
-        st.caption(
-            "المصدر: وزارة الداخلية والجماعات المحلية والنقل"
-        )
-
-    else:
-
-        title = service.get("title_en", "Document")
-        administration = service.get(
-            "administration_en",
-            "Not specified"
-        )
-        file_info = service.get(
-            "file_en",
-            "Information is not currently available."
-        )
-        notes = service.get(
-            "notes_en",
-            ""
-        )
-
-        st.markdown("---")
-
-        st.markdown(
-            f"# 📄 {title}"
-        )
-
-        st.markdown(
-            f"### 🏢 Competent Administration\n"
-            f"{administration}"
-        )
-
-        st.markdown(
-            "### 📋 Required Documents"
-        )
-
-        st.markdown(file_info)
-
-        if notes.strip():
-            st.markdown("### ℹ️ Additional Information")
-            st.markdown(notes)
-
-        st.caption(
-            "Source: Ministry of Interior, Local Authorities and Transport"
-        )
-
-
-# --------------------------------------------------
-# HEADER
-# --------------------------------------------------
-
-st.title("🏛️ AI Public Services Assistant")
-
-st.write(
-    """
-منصة متخصصة للوصول السريع إلى المعلومات المتعلقة
-بالوثائق والملفات الإدارية في الجزائر.
-"""
-)
-
-st.write(
-    "اختر الوثيقة مباشرة أو استخدم البحث الحر."
-)
-
-
-# --------------------------------------------------
-# LANGUAGE
-# --------------------------------------------------
+# -----------------------------
+# Language
+# -----------------------------
 
 language = st.radio(
     "🌐 اللغة / Language",
@@ -211,143 +17,223 @@ language = st.radio(
     horizontal=True
 )
 
-current_language = "ar" if language == "العربية" else "en"
+is_arabic = language == "العربية"
 
 
-# --------------------------------------------------
-# DOCUMENT LIST
-# --------------------------------------------------
+# -----------------------------
+# Page title
+# -----------------------------
 
-if current_language == "ar":
+if is_arabic:
+    st.title("🏛️ مساعد الخدمات العمومية بالذكاء الاصطناعي")
 
-    document_ids = list(knowledge.keys())
+    st.write(
+        """
+        منصة متخصصة للوصول السريع إلى المعلومات المتعلقة
+        بالوثائق والملفات الإدارية في الجزائر.
 
-    document_labels = [
-        knowledge[item]["title_ar"]
-        for item in document_ids
-    ]
-
-    selected_label = st.selectbox(
-        "📄 اختر الوثيقة",
-        ["-- اختر الوثيقة --"] + document_labels
+        اختر الوثيقة مباشرة أو استخدم البحث الحر.
+        """
     )
 
 else:
+    st.title("🏛️ AI Public Services Assistant")
 
-    document_ids = list(knowledge.keys())
+    st.write(
+        """
+        A specialized platform for fast access to information
+        about administrative documents and procedures in Algeria.
 
-    document_labels = [
-        knowledge[item]["title_en"]
-        for item in document_ids
-    ]
-
-    selected_label = st.selectbox(
-        "📄 Select a document",
-        ["-- Select a document --"] + document_labels
+        Select a document directly or use the free search.
+        """
     )
 
 
-# --------------------------------------------------
-# SHOW SELECTED DOCUMENT
-# --------------------------------------------------
+# -----------------------------
+# Document list
+# -----------------------------
 
-if selected_label != "-- اختر الوثيقة --" and \
-   selected_label != "-- Select a document --":
+document_titles = []
 
-    selected_service = None
+for item in knowledge:
+    if is_arabic:
+        document_titles.append(item["title_ar"])
+    else:
+        document_titles.append(item["title_en"])
 
-    for service_id in document_ids:
 
-        if current_language == "ar":
+# -----------------------------
+# Document selector
+# -----------------------------
 
-            if knowledge[service_id]["title_ar"] == selected_label:
-                selected_service = knowledge[service_id]
-                break
+if is_arabic:
+    st.subheader("📄 اختر الوثيقة")
+else:
+    st.subheader("📄 Select a document")
+
+
+selected_document = st.selectbox(
+    "Document",
+    [""] + document_titles,
+    label_visibility="collapsed"
+)
+
+
+# -----------------------------
+# Show selected document
+# -----------------------------
+
+if selected_document != "":
+
+    selected_item = None
+
+    for item in knowledge:
+
+        current_title = (
+            item["title_ar"]
+            if is_arabic
+            else item["title_en"]
+        )
+
+        if current_title == selected_document:
+            selected_item = item
+            break
+
+    if selected_item is not None:
+
+        if is_arabic:
+
+            st.header(
+                "📄 " + selected_item["title_ar"]
+            )
+
+            st.write(
+                selected_item["answer_ar"]
+            )
 
         else:
 
-            if knowledge[service_id]["title_en"] == selected_label:
-                selected_service = knowledge[service_id]
-                break
+            st.header(
+                "📄 " + selected_item["title_en"]
+            )
 
-    display_service(
-        selected_service,
-        current_language
-    )
+            st.write(
+                selected_item["answer_en"]
+            )
 
 
-# --------------------------------------------------
-# FREE SEARCH
-# --------------------------------------------------
+# -----------------------------
+# Free search
+# -----------------------------
 
-st.markdown("---")
-
-if current_language == "ar":
-
+if is_arabic:
     st.subheader("🔎 البحث الحر")
 
     question = st.text_input(
-        "اكتب اسم الوثيقة أو كلمات مرتبطة بها",
-        placeholder="مثال: بطاقة التعريف، residence، id card، جواز السفر..."
+        "اكتب اسم الوثيقة أو ما تبحث عنه"
     )
 
     search_button = st.button(
-        "🔍 بحث",
-        use_container_width=True
+        "🔍 بحث"
+    )
+
+else:
+    st.subheader("🔎 Free Search")
+
+    question = st.text_input(
+        "Enter the document or information you are looking for"
+    )
+
+    search_button = st.button(
+        "🔍 Search"
+    )
+
+
+# -----------------------------
+# Search engine
+# -----------------------------
+
+if search_button:
+
+    if question.strip() == "":
+
+        if is_arabic:
+            st.warning("⚠️ يرجى إدخال كلمة أو سؤال للبحث.")
+        else:
+            st.warning("⚠️ Please enter a word or question.")
+
+    else:
+
+        q = question.strip().lower()
+
+        found = False
+
+        for item in knowledge:
+
+            # Search in keywords
+            for keyword in item["keywords"]:
+
+                if keyword.lower() in q:
+
+                    found = True
+
+                    if is_arabic:
+
+                        st.success(
+                            "📄 " + item["title_ar"]
+                        )
+
+                        st.write(
+                            item["answer_ar"]
+                        )
+
+                    else:
+
+                        st.success(
+                            "📄 " + item["title_en"]
+                        )
+
+                        st.write(
+                            item["answer_en"]
+                        )
+
+                    break
+
+            if found:
+                break
+
+        # -----------------------------
+        # Not found
+        # -----------------------------
+
+        if not found:
+
+            if is_arabic:
+                st.info(
+                    "ℹ️ عذراً، هذه المعلومة غير متوفرة حالياً."
+                )
+
+            else:
+                st.info(
+                    "ℹ️ Sorry, this information is not available yet."
+                )
+
+
+# -----------------------------
+# Footer
+# -----------------------------
+
+st.divider()
+
+if is_arabic:
+
+    st.caption(
+        "المعلومات موجهة للاستعلام العام، ويجب التحقق من آخر تحديث رسمي قبل إيداع أي ملف."
     )
 
 else:
 
-    st.subheader("🔎 Free Search")
-
-    question = st.text_input(
-        "Enter the document name or related keywords",
-        placeholder="Example: passport, residence, id card..."
+    st.caption(
+        "Information is provided for general guidance. "
+        "Please verify the latest official requirements before submitting an administrative file."
     )
-
-    search_button = st.button(
-        "🔍 Search",
-        use_container_width=True
-    )
-
-
-# --------------------------------------------------
-# SEARCH RESULT
-# --------------------------------------------------
-
-if search_button:
-
-    if not question.strip():
-
-        if current_language == "ar":
-            st.warning("يرجى إدخال اسم الوثيقة أو كلمة للبحث.")
-        else:
-            st.warning("Please enter a document name or keyword.")
-
-    else:
-
-        result = find_service(question)
-
-        if result is None:
-
-            st.info(
-                "Sorry, this information is not available yet."
-            )
-
-        else:
-
-            display_service(
-                result,
-                current_language
-            )
-
-
-# --------------------------------------------------
-# FOOTER
-# --------------------------------------------------
-
-st.markdown("---")
-
-st.caption(
-    "AI Public Services Assistant • Administrative Documents & Procedures"
-)
