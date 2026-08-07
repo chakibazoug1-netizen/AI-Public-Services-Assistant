@@ -24,20 +24,27 @@ if st.button("Search"):
         st.warning("Please enter a question.")
 
     else:
+
         with st.spinner("Searching..."):
             time.sleep(1)
 
-        q = question.lower().strip()
+        q = question.lower()
 
         found = False
 
-        for key, answer in knowledge.items():
-            keywords = key.lower().split()
+        for service in knowledge:
 
-            if all(word in q for word in keywords):
-                st.success(key.title())
-                st.write(answer)
-                found = True
+            for keyword in service["keywords"]:
+
+                if keyword.lower() in q:
+
+                    st.success(service["title"])
+                    st.write(service["answer"])
+
+                    found = True
+                    break
+
+            if found:
                 break
 
         if not found:
