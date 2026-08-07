@@ -13,27 +13,28 @@ st.title("🏛️ AI Public Services Assistant")
 st.write("""
 Welcome!
 
-This assistant provides information about public services and
-administrative procedures.
+This assistant provides information about public services and administrative procedures.
 """)
 
 question = st.text_input("Ask your question")
 
 if st.button("Search"):
 
-    if question == "":
+    if question.strip() == "":
         st.warning("Please enter a question.")
 
     else:
         with st.spinner("Searching..."):
             time.sleep(1)
 
-        q = question.lower()
+        q = question.lower().strip()
 
         found = False
 
         for key, answer in knowledge.items():
-            if key in q:
+            keywords = key.lower().split()
+
+            if all(word in q for word in keywords):
                 st.success(key.title())
                 st.write(answer)
                 found = True
