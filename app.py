@@ -7,9 +7,24 @@ st.set_page_config(
     layout="centered"
 )
 
-# --------------------------------
-# Language
-# --------------------------------
+# =========================
+# HEADER
+# =========================
+
+st.title("🏛️ AI Public Services Assistant")
+
+st.write(
+    """
+    منصة متخصصة للوصول السريع إلى المعلومات المتعلقة
+    بالوثائق والملفات الإدارية في الجزائر.
+    """
+)
+
+st.write("اختر الوثيقة مباشرة أو استخدم البحث الحر.")
+
+# =========================
+# LANGUAGE
+# =========================
 
 language = st.radio(
     "🌐 اللغة / Language",
@@ -17,205 +32,194 @@ language = st.radio(
     horizontal=True
 )
 
-arabic = language == "العربية"
+# =========================
+# DOCUMENT LIST
+# =========================
 
+if language == "العربية":
+    document_options = ["اختر الوثيقة..."]
 
-# --------------------------------
-# Header
-# --------------------------------
-
-if arabic:
-
-    st.title("🏛️ مساعد الخدمات العمومية")
-
-    st.write(
-        "منصة متخصصة للوصول السريع إلى المعلومات المتعلقة "
-        "بالوثائق والملفات الإدارية في الجزائر."
-    )
-
-else:
-
-    st.title("🏛️ AI Public Services Assistant")
-
-    st.write(
-        "A specialized platform for fast access to information "
-        "about administrative documents and procedures in Algeria."
-    )
-
-
-# --------------------------------
-# Document selector
-# --------------------------------
-
-if arabic:
-    st.subheader("📄 اختر الوثيقة")
-else:
-    st.subheader("📄 Select a document")
-
-
-document_options = [""]
-
-for key, data in knowledge.items():
-
-    if arabic:
-        document_options.append(data["title_ar"])
-    else:
-        document_options.append(data["title_en"])
-
-
-selected = st.selectbox(
-    "document",
-    document_options,
-    label_visibility="collapsed"
-)
-
-
-# --------------------------------
-# Display selected document
-# --------------------------------
-
-if selected != "":
-
-    for key, data in knowledge.items():
-
-        title = (
-            data["title_ar"]
-            if arabic
-            else data["title_en"]
+    for item in knowledge:
+        document_options.append(
+            item.get("title_ar", "وثيقة")
         )
 
-        if selected == title:
-
-            if arabic:
-                st.header("📄 " + data["title_ar"])
-                st.write(data["answer_ar"])
-            else:
-                st.header("📄 " + data["title_en"])
-                st.write(data["answer_en"])
-
-            break
-
-
-# --------------------------------
-# Free search
-# --------------------------------
-
-if arabic:
-
-    st.subheader("🔎 البحث الحر")
-
-    question = st.text_input(
-        "اكتب اسم الوثيقة أو كلمة تبحث عنها"
-    )
-
-    search_button = st.button("🔍 بحث")
-
 else:
+    document_options = ["Select a document..."]
 
-    st.subheader("🔎 Free Search")
+    for item in knowledge:
+        document_options.append(
+            item.get("title_en", "Document")
+        )
 
-    question = st.text_input(
-        "Enter a document or keyword"
-    )
+# =========================
+# DOCUMENT SELECTOR
+# =========================
 
-    search_button = st.button("🔍 Search")
+selected_document = st.selectbox(
+    "📄 اختر الوثيقة",
+    document_options
+)
 
+# =========================
+# SHOW SELECTED DOCUMENT
+# =========================
 
-# --------------------------------
-# Search
-# --------------------------------
+if selected_document not in [
+    "اختر الوثيقة...",
+    "Select a document..."
+]:
 
-if search_button:
+    selected_data = None
 
-    q = question.strip().lower()
+    for item in knowledge:
 
-    if q == "":
+        if language == "العربية":
 
-        if arabic:
-            st.warning("⚠️ يرجى إدخال كلمة للبحث.")
-        else:
-            st.warning("⚠️ Please enter a search term.")
-
-    else:
-
-        found = False
-
-        for key, data in knowledge.items():
-
-            # Search in document key
-            if q in key.lower():
-
-                found = True
-
-            # Search in keywords
-            if not found:
-
-                for keyword in data["keywords"]:
-
-                    if keyword.lower() in q or q in keyword.lower():
-
-                        found = True
-                        break
-
-            if found:
-
-                if arabic:
-
-                    st.success(
-                        "📄 " + data["title_ar"]
-                    )
-
-                    st.write(
-                        data["answer_ar"]
-                    )
-
-                else:
-
-                    st.success(
-                        "📄 " + data["title_en"]
-                    )
-
-                    st.write(
-                        data["answer_en"]
-                    )
-
+            if item.get("title_ar") == selected_document:
+                selected_data = item
                 break
 
+        else:
 
-        # --------------------------------
-        # Not found
-        # --------------------------------
+            if item.get("title_en") == selected_document:
+                selected_data = item
+                break
 
-        if not found:
+    if selected_data is not None:
 
-            if arabic:
+        if language == "العربية":
 
-                st.info(
-                    "ℹ️ عذراً، هذه المعلومة غير متوفرة حالياً."
+            st.subheader(
+                "📄 " + selected_data.get(
+                    "title_ar",
+                    "وثيقة"
                 )
+            )
 
-            else:
-
-                st.info(
-                    "ℹ️ Sorry, this information is not available yet."
+            st.write(
+                selected_data.get(
+                    "answer_ar",
+                    "المعلومات غير متوفرة حاليا."
                 )
+            )
 
+        else:
 
-# --------------------------------
-# Footer
-# --------------------------------
+            st.subheader(
+                "📄 " + selected_data.get(
+                    "title_en",
+                    "Document"
+                )
+            )
+
+            st.write(
+                selected_data.get(
+                    "answer_en",
+                    "Information is not available yet."
+                )
+            )
+
+# =========================
+# FREE SEARCH
+# =========================
 
 st.divider()
 
-if arabic:
-
-    st.caption(
-        "المعلومات للاستعلام العام. يرجى التحقق من آخر تحديث رسمي قبل إيداع أي ملف."
-    )
-
+if language == "العربية":
+    st.subheader("🔎 البحث الحر")
+    search_placeholder = "اكتب اسم الوثيقة أو كلمة للبحث..."
 else:
+    st.subheader("🔎 Free Search")
+    search_placeholder = "Enter a document or keyword..."
 
-    st.caption(
-        "Information is provided for general guidance. "
-        "Please verify the latest official requirements before submitting a file."
-    )
+question = st.text_input(
+    "البحث",
+    placeholder=search_placeholder
+)
+
+if st.button("🔍 Search"):
+
+    if question.strip() == "":
+
+        if language == "العربية":
+            st.warning("يرجى إدخال كلمة أو اسم الوثيقة.")
+        else:
+            st.warning("Please enter a document or keyword.")
+
+    else:
+
+        q = question.strip().lower()
+
+        found = False
+
+        for item in knowledge:
+
+            keywords = item.get("keywords", [])
+
+            for keyword in keywords:
+
+                if keyword.lower() in q:
+
+                    found = True
+
+                    if language == "العربية":
+
+                        st.success(
+                            item.get(
+                                "title_ar",
+                                "الوثيقة"
+                            )
+                        )
+
+                        st.write(
+                            item.get(
+                                "answer_ar",
+                                "المعلومات غير متوفرة حاليا."
+                            )
+                        )
+
+                    else:
+
+                        st.success(
+                            item.get(
+                                "title_en",
+                                "Document"
+                            )
+                        )
+
+                        st.write(
+                            item.get(
+                                "answer_en",
+                                "Information is not available yet."
+                            )
+                        )
+
+                    break
+
+            if found:
+                break
+
+        if not found:
+
+            if language == "العربية":
+
+                st.info(
+                    "عذرا، هذه المعلومات غير متوفرة حاليا."
+                )
+
+            else:
+
+                st.info(
+                    "Sorry, this information is not available yet."
+                )
+
+# =========================
+# FOOTER
+# =========================
+
+st.divider()
+
+st.caption(
+    "AI Public Services Assistant — معلومات إدارية مبسطة وسريعة"
+)
