@@ -9,26 +9,27 @@ knowledge = [
             "renew passport"
         ],
         "answer": """
-Requirements:
+Passport Requirements
 
 • National Identity Card
 • Birth Certificate
 • Biometric Photo
-• Payment of fees
+• Payment of required fees
 """
     },
 
     {
         "title": "National Identity Card",
         "keywords": [
-            "id",
             "id card",
-            "identity",
             "identity card",
             "national id",
-            "national identity card"
+            "national identity card",
+            "identity"
         ],
         "answer": """
+National Identity Card
+
 Required documents:
 
 • Birth Certificate
@@ -40,11 +41,13 @@ Required documents:
     {
         "title": "Residence Certificate",
         "keywords": [
-            "residence",
             "residence certificate",
+            "residence",
             "proof of residence"
         ],
         "answer": """
+Residence Certificate
+
 Issued by the municipality of residence.
 """
     },
@@ -52,11 +55,33 @@ Issued by the municipality of residence.
     {
         "title": "Birth Certificate",
         "keywords": [
-            "birth",
-            "birth certificate"
+            "birth certificate",
+            "birth"
         ],
         "answer": """
+Birth Certificate
+
 Issued by the Civil Status Office.
+"""
+    },
+
+    {
+        "title": "Driving Licence",
+        "keywords": [
+            "driving licence",
+            "driving license",
+            "driver license",
+            "driving permit"
+        ],
+        "answer": """
+Driving Licence
+
+Required documents:
+
+• Medical Certificate
+• National Identity Card
+• Photos
+• Payment of required fees
 """
     }
 
