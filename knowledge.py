@@ -1,60 +1,63 @@
-knowledge = {
+knowledge = [
 
-    "passport": """
-Passport
-
+    {
+        "title": "Passport",
+        "keywords": [
+            "passport",
+            "biometric passport",
+            "passport renewal",
+            "renew passport"
+        ],
+        "answer": """
 Requirements:
-• National ID Card
+
+• National Identity Card
 • Birth Certificate
 • Biometric Photo
 • Payment of fees
-""",
+"""
+    },
 
-    "biometric passport": """
-Passport
+    {
+        "title": "National Identity Card",
+        "keywords": [
+            "id",
+            "id card",
+            "identity",
+            "identity card",
+            "national id",
+            "national identity card"
+        ],
+        "answer": """
+Required documents:
 
-Requirements:
-• National ID Card
-• Birth Certificate
-• Biometric Photo
-• Payment of fees
-""",
-
-    "passport renewal": """
-Passport Renewal
-
-• Old passport
-• National ID
-• New biometric photo
-""",
-
-    "identity card": """
-National Identity Card
-
-Requirements:
 • Birth Certificate
 • Residence Certificate
 • Biometric Photo
-""",
+"""
+    },
 
-    "id card": """
-National Identity Card
-
-Requirements:
-• Birth Certificate
-• Residence Certificate
-• Biometric Photo
-""",
-
-    "residence": """
-Residence Certificate
-
+    {
+        "title": "Residence Certificate",
+        "keywords": [
+            "residence",
+            "residence certificate",
+            "proof of residence"
+        ],
+        "answer": """
 Issued by the municipality of residence.
-""",
+"""
+    },
 
-    "birth certificate": """
-Birth Certificate
-
+    {
+        "title": "Birth Certificate",
+        "keywords": [
+            "birth",
+            "birth certificate"
+        ],
+        "answer": """
 Issued by the Civil Status Office.
 """
-}
+    }
+
+]
