@@ -1,54 +1,60 @@
-knowledge = [
+knowledge = {
 
-    {
+    "national_identity_card": {
         "title_ar": "بطاقة التعريف الوطنية",
         "title_en": "National Identity Card",
+
         "keywords": [
             "بطاقة التعريف",
             "بطاقة التعريف الوطنية",
-            "بطاقة هوية",
+            "بطاقة الهوية",
             "الهوية",
             "id",
             "id card",
+            "identity",
             "identity card",
             "national id",
             "national identity card"
         ],
+
         "answer_ar": """
 📄 ملف بطاقة التعريف الوطنية
 
 الإدارة المختصة:
-بلدية الإقامة بالنسبة للمواطنين المقيمين في الجزائر.
+بلدية إقامة المعني.
 
-الوثائق الأساسية:
-• استمارة طلب مملوءة وممضاة من المعني أو الولي الشرعي بالنسبة للقصر.
+الوثائق المطلوبة حسب الحالة:
+
+• استمارة طلب بطاقة التعريف الوطنية مملوءة وممضاة.
 • شهادة الإقامة سارية المفعول.
-• صورتان شمسيتان للهوية، حديثتان، بالألوان ومتماثلتان، بخلفية بيضاء موحدة وبدون إطار.
-• شهادة الجنسية بالنسبة لمن لا يحوزون على بطاقة تعريف وطنية بيومترية أو جواز سفر بيومتري.
+• صورتان شمسيتان للهوية، حديثتان ومتماثلتان.
+• شهادة الجنسية بالنسبة للحالات التي لا تتوفر فيها البيانات المطلوبة في قواعد المعطيات الوطنية.
 
-ملاحظة:
-قد تستفيد بعض الحالات من إعفاءات مرتبطة بالبيانات الموجودة في قواعد المعطيات الوطنية.
+تختلف بعض الوثائق حسب حالة الطالب، مثل أول طلب أو التجديد أو تغيير البيانات.
 """,
+
         "answer_en": """
 📄 National Identity Card
 
 Competent administration:
-The municipality of residence for citizens residing in Algeria.
+The municipality of residence.
 
-Main documents:
+Required documents may include:
+
 • Completed and signed application form.
 • Valid residence certificate.
-• Two recent, identical color ID photos with a plain white background.
-• Nationality certificate for applicants who do not already hold a biometric national identity card or biometric passport.
+• Two recent and identical ID photos.
+• Nationality certificate in cases where the required information is not available in national databases.
 
-Note:
-Some applicants may benefit from exemptions where the required information is already available in national databases.
+Some requirements may differ depending on whether this is a first application, renewal or modification.
 """
     },
 
-    {
+
+    "passport": {
         "title_ar": "جواز السفر",
         "title_en": "Passport",
+
         "keywords": [
             "جواز السفر",
             "جواز سفر",
@@ -58,129 +64,143 @@ Some applicants may benefit from exemptions where the required information is al
             "passport renewal",
             "renew passport"
         ],
+
         "answer_ar": """
 📄 ملف جواز السفر البيومتري
 
-بالنسبة للمواطنين المقيمين في الجزائر، يتضمن الملف حسب الحالة والإجراء:
+الوثائق المطلوبة تختلف حسب الحالة، وتشمل أساسًا:
 
-• استمارة طلب جواز السفر مملوءة وممضاة.
-• الوثائق المتعلقة بالهوية والحالة المدنية حسب الحالة.
-• شهادة الإقامة عندما تكون مطلوبة.
-• صورتان شمسيتان للهوية، حديثتان ومتماثلتان، بالألوان وخلفية بيضاء.
-• قسيمة جبائية حسب طبيعة الوثيقة والإجراء.
-• نسخة من بطاقة فصيلة الدم.
+• استمارة طلب جواز السفر.
+• بطاقة التعريف الوطنية أو وثيقة إثبات الهوية.
+• شهادة الإقامة حسب الحالة.
+• صور شمسية مطابقة للمعايير المطلوبة.
+• بطاقة أو وثيقة فصيلة الدم.
+• الطابع أو الرسم الجبائي حسب الحالة.
 
-في حالة التجديد:
-• جواز السفر السابق أو الوثيقة المثبتة للحالة، حسب سبب التجديد.
-• وثائق إضافية قد تكون مطلوبة في حالة الضياع أو السرقة أو الإتلاف أو تغيير محل الإقامة.
+في حالة التجديد أو الضياع أو السرقة قد تضاف وثائق أخرى.
 """,
+
         "answer_en": """
 📄 Biometric Passport
 
-For Algerian citizens residing in Algeria, the file may include depending on the procedure:
+Requirements depend on the applicant's situation and may include:
 
-• Completed and signed passport application form.
-• Identity and civil-status documents, depending on the case.
+• Passport application form.
+• National identity card or proof of identity.
 • Residence certificate where required.
-• Two recent, identical color ID photos with a white background.
-• Tax stamp according to the type of document and procedure.
-• Copy of blood-group card.
+• ID photos meeting the required standards.
+• Blood-group document.
+• Applicable tax stamp or fee.
 
-For renewal:
-• Previous passport or supporting document depending on the reason for renewal.
-• Additional documents may be required in cases of loss, theft, damage or change of residence.
+Additional documents may be required for renewal, loss or theft.
 """
     },
 
-    {
+
+    "driving_licence": {
         "title_ar": "رخصة السياقة",
         "title_en": "Driving Licence",
+
         "keywords": [
             "رخصة السياقة",
-            "رخصة القيادة",
             "رخصة سياقة",
+            "رخصة القيادة",
             "السياقة",
             "driving licence",
             "driving license",
-            "driver license",
-            "driver licence"
+            "driver licence",
+            "driver license"
         ],
+
         "answer_ar": """
 📄 ملف رخصة السياقة
 
 يودع الملف على مستوى البلدية بمكان إقامة المعني.
 
-من الوثائق المطلوبة حسب الإجراء:
+حسب الإجراء، يمكن أن يتضمن الملف:
+
 • استمارة طلب الحصول على رخصة السياقة مملوءة وموقعة.
 • بطاقة إقامة سارية المفعول.
-• شهادة طبية وفق التنظيم المعمول به.
+• شهادة طبية معدة وفق التنظيم المعمول به.
 • صورتان شمسيتان للهوية.
-• طابع جبائي بقيمة 1000 دج للرخصة العادية أو وصل بنفس المبلغ للرخصة البيومترية، حسب الحالة.
+• نسخة من بطاقة فصيلة الدم.
+• شهادة التأهيل المؤقتة بعد النجاح في الامتحانات بالنسبة للرخصة الاختبارية.
+• الرسم أو الطابع المحدد قانونًا.
 
-بالنسبة لبعض إجراءات التجديد، تضاف رخصة السياقة السابقة أو وثائق تثبت الضياع أو السرقة أو التلف حسب الحالة.
+تختلف الوثائق حسب نوع العملية: أول طلب، تجديد، ضياع، تلف أو تحويل.
 """,
+
         "answer_en": """
 📄 Driving Licence
 
 The application is submitted to the municipality of residence.
 
-Depending on the procedure, required documents include:
+Depending on the procedure, the file may include:
+
 • Completed and signed application form.
-• Valid residence card/certificate.
+• Valid residence card.
 • Medical certificate.
 • Two ID photos.
-• Tax stamp of DZD 1,000 for the ordinary licence or the corresponding receipt for the biometric licence, as applicable.
+• Copy of blood-group card.
+• Temporary qualification certificate after passing the examinations for a probationary licence.
+• Applicable fee or tax stamp.
 
-For certain renewal procedures, the previous driving licence or documents proving loss, theft or damage may also be required.
+Requirements may differ for first application, renewal, loss, damage or conversion.
 """
     },
 
-    {
+
+    "vehicle_registration": {
         "title_ar": "البطاقة الرمادية",
         "title_en": "Vehicle Registration Card",
+
         "keywords": [
             "البطاقة الرمادية",
             "بطاقة التسجيل",
             "شهادة التسجيل",
             "ترقيم المركبات",
-            "vehicle registration",
-            "registration card",
             "gray card",
-            "grey card"
+            "grey card",
+            "vehicle registration",
+            "registration card"
         ],
+
         "answer_ar": """
 📄 البطاقة الرمادية / شهادة تسجيل المركبة
 
-هذه الوثيقة مرتبطة بتسجيل وترقيم المركبات.
+تختلف الوثائق حسب العملية المطلوبة، ومنها:
 
-⚠️ تختلف الوثائق المطلوبة حسب العملية:
 • تسجيل مركبة جديدة.
 • نقل ملكية مركبة.
 • تغيير محل الإقامة.
-• تجديد أو تصحيح بيانات شهادة التسجيل.
-• فقدان أو تلف الوثيقة.
+• تغيير بيانات المركبة أو المالك.
+• تجديد أو تصحيح شهادة التسجيل.
+• حالة الضياع أو السرقة أو التلف.
 
-سيتم إدراج الملف التفصيلي لكل حالة على حدة في النسخة الموسعة للتطبيق بعد توثيقه من المصدر الرسمي.
+سيتم تفصيل كل حالة إجرائية بشكل مستقل في النسخ القادمة من التطبيق.
 """,
+
         "answer_en": """
 📄 Vehicle Registration Card
 
-This document is related to vehicle registration and identification.
+Requirements depend on the procedure, including:
 
-⚠️ Required documents depend on the procedure:
 • Registration of a new vehicle.
 • Transfer of ownership.
 • Change of residence.
-• Renewal or correction of registration information.
-• Loss or damage of the document.
+• Change of vehicle or owner information.
+• Renewal or correction of registration.
+• Loss, theft or damage.
 
-Detailed files for each procedure will be added separately after verification against the official source.
+Each procedure will be detailed separately in future versions.
 """
     },
 
-    {
+
+    "residence_certificate": {
         "title_ar": "شهادة الإقامة",
         "title_en": "Residence Certificate",
+
         "keywords": [
             "شهادة الإقامة",
             "شهادة اقامة",
@@ -189,55 +209,47 @@ Detailed files for each procedure will be added separately after verification ag
             "residence certificate",
             "proof of residence"
         ],
+
         "answer_ar": """
 📄 شهادة الإقامة
 
 الإدارة المختصة:
 بلدية مكان إقامة الشخص.
 
-تسلم شهادة الإقامة حصرا لإدراجها في ملفات محددة، منها:
+تسلم شهادة الإقامة لإدراجها في ملفات محددة، من بينها:
+
 • طلب بطاقة التعريف الوطنية.
 • طلب جواز السفر الوطني.
-• بعض الملفات المحددة قانونا.
+• ملفات أخرى يحددها التنظيم.
 
-الوثائق الثبوتية يمكن أن تشمل:
-• آخر وصلين للكراء.
-• عقد الإيجار أو قرار الاستفادة من سكن.
-• آخر وصل للكهرباء والغاز.
-• آخر وصل للمياه.
-• قرار تخصيص مسكن وظيفي.
-• نسخة من عقد الملكية.
-• شهادة الإيواء.
+تختلف الوثائق المثبتة للإقامة حسب الحالة، ويمكن أن تشمل عقد الإيجار، وصولات الخدمات، عقد الملكية أو شهادة الإيواء.
 
-تختلف مدة الصلاحية حسب النص أو النسخة المنشورة من المصدر الرسمي، لذلك يجب التحقق من آخر تحديث قبل اعتماد المعلومة في ملف إداري حساس.
+⚠️ يجب دائمًا التحقق من آخر تحديث رسمي قبل إيداع الملف.
 """,
+
         "answer_en": """
 📄 Residence Certificate
 
 Competent administration:
 The municipality of residence.
 
-It is issued for specific administrative files, including:
+The residence certificate is issued for specific administrative files, including:
+
 • National Identity Card application.
 • National Passport application.
-• Other cases specified by regulation.
+• Other cases specified by regulations.
 
-Supporting documents may include:
-• The last two rent receipts.
-• Lease contract or housing allocation document.
-• Latest electricity and gas bill.
-• Latest water bill.
-• Official housing allocation decision.
-• Copy of property deed.
-• Accommodation certificate.
+Proof of residence may vary depending on the situation.
 
-Validity should be checked against the latest official update before relying on it for an administrative file.
+⚠️ Always verify the latest official requirements before submitting a file.
 """
     },
 
-    {
+
+    "residence_card": {
         "title_ar": "بطاقة الإقامة",
         "title_en": "Residence Card",
+
         "keywords": [
             "بطاقة الإقامة",
             "بطاقة اقامة",
@@ -245,121 +257,116 @@ Validity should be checked against the latest official update before relying on 
             "residence card",
             "residence document"
         ],
+
         "answer_ar": """
 📄 بطاقة الإقامة
 
-تسلم بطاقة الإقامة من مصالح الحالة المدنية ببلدية الإقامة.
+يقدم الطلب لدى بلدية إقامة المعني.
 
-تتضمن معلومات أساسية مثل:
-• الاسم.
-• اللقب.
-• العنوان.
-• درجة القرابة.
+تختلف الوثائق المطلوبة حسب طبيعة الطلب والحالة.
 
-وتستند عملية إصدارها إلى الوثائق المثبتة للإقامة، حسب الحالة.
+يجب التمييز بين:
 
-يجب الانتباه إلى أن بطاقة الإقامة تختلف عن شهادة الإقامة من حيث الغرض والاستعمال.
+• شهادة الإقامة.
+• بطاقة الإقامة.
+
+فهما وثيقتان مختلفتان من حيث الغرض والاستعمال.
 """,
+
         "answer_en": """
 📄 Residence Card
 
-The residence card is issued through the civil-status services of the municipality of residence.
+The application is submitted to the municipality of residence.
 
-It contains basic information such as:
-• First name.
-• Family name.
-• Address.
-• Degree of relationship.
+Requirements depend on the purpose and situation.
 
-Its issuance is based on supporting residence documents, depending on the case.
-
-The residence card should not be confused with the residence certificate because their purposes and uses differ.
+The residence card should be distinguished from the residence certificate because they are different documents with different purposes.
 """
     },
 
-    {
+
+    "birth_certificate": {
         "title_ar": "شهادة الميلاد",
         "title_en": "Birth Certificate",
+
         "keywords": [
             "شهادة الميلاد",
             "شهادة ميلاد",
             "عقد الميلاد",
+            "الميلاد",
             "birth certificate",
             "birth record",
             "birth"
         ],
+
         "answer_ar": """
 📄 شهادة الميلاد
 
-يمكن استخراج شهادة الميلاد من:
-• أي بلدية أو ملحقة إدارية عبر التراب الوطني.
-• عن طريق الإنترنت بالنسبة للخدمات المتاحة.
+تسلم وثائق الحالة المدنية من مصالح الحالة المدنية.
 
-تتولى مصالح الحالة المدنية إصدار الوثيقة.
+يمكن استخراج شهادة الميلاد من المصالح المختصة، كما تتوفر خدمات إلكترونية لبعض وثائق الحالة المدنية.
 
-توجد عدة صيغ لوثائق الحالة المدنية حسب الغرض المطلوب.
+تختلف صيغة الوثيقة حسب الغرض الإداري المطلوب.
 """,
+
         "answer_en": """
 📄 Birth Certificate
 
-A birth certificate can be obtained from:
-• Any municipality or administrative annex across Algeria.
-• Online through available electronic services.
+Birth certificates are issued by the civil-status services.
 
-The civil-status services issue the document.
+The document can be obtained from the competent civil-status services, and electronic services are available for certain civil-status documents.
 
-Different forms of civil-status documents may exist depending on the required purpose.
+The form of the document may depend on the administrative purpose.
 """
     },
 
-    {
+
+    "marriage_certificate": {
         "title_ar": "عقد الزواج",
         "title_en": "Marriage Certificate",
+
         "keywords": [
             "عقد الزواج",
             "عقد زواج",
             "الزواج",
+            "شهادة الزواج",
             "marriage certificate",
             "marriage contract",
             "marriage"
         ],
+
         "answer_ar": """
 📄 ملف عقد الزواج
 
-على الزوجين تقديم، حسب الحالة:
-• شهادة ميلاد مؤرخة بأقل من ثلاثة أشهر.
-• شهادة إقامة أحد الزوجين.
+من الوثائق المطلوبة حسب الحالة:
+
+• شهادة ميلاد حديثة.
+• شهادة إقامة.
 • شهادة طبية للزوجين.
-• بطاقتا التعريف الوطنية للشاهدين.
+• بطاقتا التعريف الوطنيتان للشاهدين.
 
-توجد وثائق إضافية في حالات خاصة مثل:
-• القصر.
-• العسكريين وأسلاك الأمن.
-• وجود زواج سابق.
-• تعدد الزوجات.
-• المرأة التي حل زواجها السابق.
+يمكن أن تطلب وثائق إضافية في حالات خاصة.
 """,
+
         "answer_en": """
-📄 Marriage Certificate / Contract
+📄 Marriage Certificate
 
-Depending on the case, the couple must provide:
-• Birth certificate issued less than three months earlier.
-• Residence certificate of one of the spouses.
-• Medical certificates for both spouses.
-• National ID cards of the two witnesses.
+Depending on the situation, the file may include:
 
-Additional documents may be required for:
-• Minors.
-• Military and security personnel.
-• Previous marriage.
-• Polygamy.
-• A woman whose previous marriage has ended.
+• Recent birth certificate.
+• Residence certificate.
+• Medical certificates for the spouses.
+• National identity cards of the two witnesses.
+
+Additional documents may be required in special cases.
 """
     },
 
-    {
+
+    "family_card": {
         "title_ar": "البطاقة العائلية للحالة المدنية",
         "title_en": "Family Civil Status Card",
+
         "keywords": [
             "البطاقة العائلية",
             "البطاقة العائلية للحالة المدنية",
@@ -367,35 +374,37 @@ Additional documents may be required for:
             "family card",
             "family civil status card"
         ],
+
         "answer_ar": """
 📄 البطاقة العائلية للحالة المدنية
 
 الإدارة المختصة:
-أي مصلحة للحالة المدنية بأي بلدية.
+مصلحة الحالة المدنية بالبلدية.
 
 الوثيقة المطلوبة:
 • الدفتر العائلي.
 
-آجال التسليم:
-تسلم البطاقة العائلية للحالة المدنية في حينها.
+يمكن طلب البطاقة العائلية من مصالح الحالة المدنية.
 """,
+
         "answer_en": """
 📄 Family Civil Status Card
 
 Competent administration:
-Any civil-status service at any municipality.
+The civil-status service of the municipality.
 
 Required document:
 • Family booklet.
 
-Delivery time:
-The family civil-status card is delivered immediately.
+The document can be requested from the civil-status services.
 """
     },
 
-    {
+
+    "death_certificate": {
         "title_ar": "شهادة الوفاة",
         "title_en": "Death Certificate",
+
         "keywords": [
             "شهادة الوفاة",
             "شهادة وفاة",
@@ -405,32 +414,34 @@ The family civil-status card is delivered immediately.
             "death record",
             "death"
         ],
+
         "answer_ar": """
 📄 شهادة الوفاة
 
-التصريح بالوفاة:
-يتم التصريح على مستوى بلدية مكان وقوع الوفاة.
+يتم التصريح بالوفاة لدى مصالح الحالة المدنية المختصة.
 
-الوثائق المطلوبة للتصريح يمكن أن تشمل:
-• شهادة طبية للوفاة محررة من طرف طبيب.
-• أو شهادة محررة من طرف ضابط الشرطة.
-• الدفتر العائلي، وعند الاقتضاء مستخرج من شهادة ميلاد المتوفى.
+يمكن أن يتضمن ملف التصريح:
 
-يمكن استخراج شهادة الوفاة من أي بلدية أو ملحقة إدارية عبر التراب الوطني، كما تتوفر خدمة الاستخراج الإلكتروني.
+• شهادة طبية للوفاة.
+• الدفتر العائلي حسب الحالة.
+• وثائق أخرى عند الاقتضاء.
+
+يمكن استخراج وثائق الوفاة من مصالح الحالة المدنية وفق الإجراءات المعمول بها.
 """,
+
         "answer_en": """
 📄 Death Certificate
 
-Death declaration:
-It is made at the municipality where the death occurred.
+The death is declared to the competent civil-status services.
 
-Supporting documents may include:
-• Medical death certificate issued by a doctor.
-• Or a certificate issued by a police officer.
-• Family booklet and, where applicable, an extract of the deceased person's birth certificate.
+The declaration may require:
 
-The death certificate can be obtained from any municipality or administrative annex across Algeria, and electronic services are also available.
+• Medical death certificate.
+• Family booklet where applicable.
+• Additional supporting documents where necessary.
+
+Death documents are issued through the civil-status services according to applicable procedures.
 """
     }
 
-]
+}
