@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 st.set_page_config(
     page_title="AI Public Services Assistant",
@@ -8,25 +9,31 @@ st.set_page_config(
 
 st.title("🏛️ AI Public Services Assistant")
 
-st.write("""
+st.markdown("""
 Welcome!
 
-This AI-powered assistant helps citizens find information about public services and administrative procedures.
+This assistant helps citizens obtain information about public services and administrative procedures.
+
+Type your question below.
 """)
 
 question = st.text_input("Ask your question")
 
-if question:
-    q = question.lower()
-
-    if "passport" in q:
-        st.success("To apply for a passport, you need your national ID card, birth certificate, biometric photo, and the required application form.")
-
-    elif "id" in q:
-        st.success("To obtain or renew your national ID card, visit your local municipality with the required documents.")
-
-    elif "birth" in q:
-        st.success("Birth certificates can be obtained from the civil registry office or through online government services where available.")
-
+if st.button("Search"):
+    if question == "":
+        st.warning("Please enter a question.")
     else:
-        st.info("Sorry, this prototype currently answers only a limited number of public service questions.")
+        with st.spinner("Searching..."):
+            time.sleep(2)
+
+        st.success("Answer found!")
+
+        st.info(f"""
+You asked:
+
+{question}
+
+This is still a prototype.
+
+Soon this assistant will provide real answers using Artificial Intelligence.
+""")
