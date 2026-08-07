@@ -30,14 +30,14 @@ if st.button("Search"):
 
         q = question.lower()
 
-found = False
+        found = False
 
-for key, answer in knowledge.items():
-    if key in q:
-        st.success(key.title())
-        st.write(answer)
-        found = True
-        break
+        for key, answer in knowledge.items():
+            if key in q:
+                st.success(key.title())
+                st.write(answer)
+                found = True
+                break
 
-if not found:
-    st.info("Sorry, this information is not available yet.")
+        if not found:
+            st.info("Sorry, this information is not available yet.")
