@@ -1,4 +1,5 @@
 import streamlit as st
+from knowledge import knowledge
 import time
 
 st.set_page_config(
