@@ -10,6 +10,10 @@ st.set_page_config(
 
 st.title("🏛️ AI Public Services Assistant")
 
+# اختبار
+st.write(type(knowledge))
+st.write(knowledge)
+
 st.write("""
 Welcome!
 
