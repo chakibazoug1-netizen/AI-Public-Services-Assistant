@@ -30,28 +30,14 @@ if st.button("Search"):
 
         q = question.lower()
 
-        if "passport" in q:
-            st.success("Passport Information")
-            st.write("""
-• Valid national ID card
-• Birth certificate
-• Biometric photo
-• Payment of required fees
-""")
+found = False
 
-        elif "identity" in q or "id card" in q:
-            st.success("National Identity Card")
-            st.write("""
-• Birth certificate
-• Residence certificate
-• Biometric photo
-""")
+for key, answer in knowledge.items():
+    if key in q:
+        st.success(key.title())
+        st.write(answer)
+        found = True
+        break
 
-        elif "residence" in q:
-            st.success("Residence Certificate")
-            st.write("""
-The residence certificate is issued by the municipality of residence.
-""")
-
-        else:
-            st.info("Sorry, this information is not available yet.")
+if not found:
+    st.info("Sorry, this information is not available yet.")
